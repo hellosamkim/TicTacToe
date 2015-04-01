@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Tic Tac Toe</title>
   <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" type="text/css" href="animate.css">
   <link href='https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Open+Sans' rel='stylesheet' type='text/css'>
   <link src="font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -11,12 +12,27 @@
   <div class="title">
     <h1>Tic Tac Toe</h1>
   </div>
-  <div id="player-win">
-    <h2>Player Score</h2>  
-  </div>
-  <div id="computer-win">
-    <h2>Computer Score</h2>
-  </div>
+  <section id="new-game">
+    <h1>Start New Game</h1>
+  </section>
+  <section id="game-info">
+    <h1> Scores</h1>
+    <div>
+      <h2>Your Score: </h2>
+      <h2 id="player-score"></h2>
+    </div>
+    <div>
+      <h2>Henry's Score:</h2>
+      <h2 id="computer-score"></h2>
+    </div>
+  </section>
+  <section id="game-menu">
+    <h1>Play Again?</h1>
+    <div>
+      <h2 id="yes">Yes</h2>
+      <h2 id="no">No</h2>
+    </div>
+  </section>
   <div class="game">
     <div class="rows">
       <div class="boxes" id="1"></div>      

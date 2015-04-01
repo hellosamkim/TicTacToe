@@ -4,10 +4,22 @@ $(document).ready(function(){
   turn = 0;
   computer_selection = [];
   user_selection = [];
-  game();
+  user_score = 0;
+  computer_score = 0;
+
+  $('#new-game').on('click',function(){
+    $('#new-game').addClass('animated slideOutDown')
+    setTimeout('game()', 600);
+    setTimeout("$('#game-info').addClass('animated slideInLeft')", 600);
+  });
 });
 
 function game(){
+  $('#player-score').text(user_score);
+  $('#computer-score').text(computer_score);
+  $('.boxes').css({
+    'background-color': 'rgba(158, 169, 189, 0.6)'
+  });
   $('.boxes').hover(
     function(){
       if (!$(this).text()){
@@ -21,7 +33,9 @@ function game(){
     var pos = $(this).attr('id')
     var index = avail_pos.indexOf(Number(pos));
     if (turn % 2 === 0) {
-      $(this).text("X");
+      $(this).text("X").css({
+        'color': 'rgba(255, 79, 59, 0.8)'
+      });
       // Remove clicked selection from available positions
       avail_pos.splice(index, 1)
       user_selection.push(Number(pos));
@@ -41,7 +55,9 @@ function computerLogic(){
     // bestSelection is our AI for figuring out placement
     var select = bestSelection();
     var index = avail_pos.indexOf(Number(select));
-    $('#' + select).text("O").off('click')
+    $('#' + select).text("O").off('click').css({
+      'color': 'rgba(59, 137, 255, 0.8)'
+    });
     computer_selection.push(select);
     avail_pos.splice(index, 1)
     turn++;
@@ -77,13 +93,15 @@ function checkWinner(selection, user){
   $(solutions).each(function(idx, e){
     if (selection.indexOf(e[0]) >= 0 && selection.indexOf(e[1]) >= 0 && selection.indexOf(e[2]) >= 0) {
       if (user === "player") {
+        user_score += 1;
+        $('#player-score').text(user_score);
         alert("You Win!");
-        winnerScore("player");
         gameAgain();
         return false;
       } else {
+        computer_score += 1;
+        $('#computer-score').text(computer_score);
         alert("Computer Wins!")
-        winnerScore("player");
         gameAgain();
         return false;
       };
@@ -122,20 +140,20 @@ function selectionLogic(selection){
 };
 
 function gameAgain(){
-  $('.boxes').on('click');
-  console.log(turn);
-  alert("Play Again!");
-  $('.boxes').empty();
-  avail_pos = [1,2,3,4,5,6,7,8,9];
-  computer_selection = [];
-  user_selection = [];
-  game();
+  $('#game-menu').addClass('animated slideInRight');
+
+  $('#yes').click(function(){
+    $('#game-menu').addClass('animated slideOutRight');
+    if ($('#game-menu').hasClass('animated')) {
+      setTimeout("$('#game-menu').removeClass();", 2000);
+    }
+    $('.boxes').empty();
+    avail_pos = [1,2,3,4,5,6,7,8,9];
+    computer_selection = [];
+    user_selection = [];
+    game();
+    if (turn % 2 != 0) {
+      setTimeout("$('.boxes').trigger('click')", 300);
+    }
+  });
 };
-
-function winnderScore(winner) {
-  var x_score = 0;
-  var o_score = 0;
-  if (winner) {
-
-  }
-}
