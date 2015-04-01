@@ -1,0 +1,62 @@
+body {
+  background-color: rgba(255, 248, 243, 0.8);
+  font-family: 'Open Sans', sans-serif;
+}
+.title h1 {
+  text-align: center;
+  font-family: "Gloria Hallelujah", cursive;
+  margin-top: -5px;
+  font-size: 70px;
+}
+
+.game {
+  margin-top: -30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 468px;
+  height: 468px;
+}
+
+.rows {
+  width: 468px;
+}
+
+.boxes {
+  font-family: "Arial", sans-serif;
+  height: 150px;
+  width: 150px;
+  border: 3px solid rgba(255, 248, 243, 0.8);
+  background-color: rgba(158, 169, 189, 0.6);
+  float: left;
+  text-align: center;
+  font-size: 150px;
+  line-height: 150px;
+}
+
+.game-menu {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#player-win, #computer-win {
+  position: absolute;
+  margin-top: -50px;
+}
+
+#player-win {
+  left: 0;
+  margin-left: 100px;
+}
+
+#player-win h2 {
+  font-size: 30px;
+}
+
+#computer-win {
+  right: 0;
+  margin-right: 100px;
+}
+
+#computer-win h2 {
+  font-size: 30px;
+}
